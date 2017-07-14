@@ -9,7 +9,7 @@
 * Go to `ubuntu@claw:/var/www/html/drupal$ `
 * Issue the following command `composer require drupal/search_api_solr` to install the required dependencies
 * Download and enable search_api_solr module
-* Optionally, also enable Solr Search Defaults submodule to make the configuration easier
+* Optionally, also enable Solr Search Defaults submodule to make the configuration process easier
 
 ### Step 2 - Configuring Apache Solr Core on the server
 The default core that comes with the current vagrant does not have the configuration expected by Drupal, thus for now we will create a new Apache core and copy the expected configurations.  
