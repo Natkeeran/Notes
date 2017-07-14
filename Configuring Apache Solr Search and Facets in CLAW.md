@@ -47,7 +47,7 @@ The default core that comes with the current vagrant does not have the configura
 ### Step 5 - Searching
 * Go to `http://localhost:8000/search/node` to search the index content
 
-### Step 6 - Seting up Facted Search
+### Step 6 - Setting up Faceted search
 * To get faceted search, enable the [facets](https://www.drupal.org/project/facets ) module
 * Follow the steps [here](https://www.jeffgeerling.com/blog/2017/setting-faceted-apache-solr-search-drupal-8) under the section of "Make a Faceted Solr Search View" to configure a Facet
 
