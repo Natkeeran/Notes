@@ -19,7 +19,7 @@ The default core that comes with the current vagrant does not have the configura
 * Go to `cd /opt/solr-6.2.1/server/solr/`
 * Create a directory with the same name as the new core `mkdir CLAW2`
 * Inside CLAW2, create a `config` directory and a `data` directory 
-* Go into the config directory and copy solr 6.x configuration fro the module: `cp -R /var/www/html/drupal/web/modules/contrib/search_api_solr/solr-conf/6.x/* ./`
+* Go into the config directory and copy solr 6.x configuration from the module: `cp -R /var/www/html/drupal/web/modules/contrib/search_api_solr/solr-conf/6.x/* ./`
 * Go to the bin directory: `/opt/solr-6.2.1/bin` and restart the server by issuing the following commands:
 ```
 ./solr stop -p 8983 
