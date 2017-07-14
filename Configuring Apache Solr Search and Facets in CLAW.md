@@ -28,7 +28,7 @@ The default core that comes with the current vagrant does not have the configura
 
 ### Step 3 - Configure the Apache Solr server in Drupal
 * Go to search api configuration page: http://localhost:8000/admin/config/search/search-api
-* Click to `Add server` button
+* Click the `Add server` button
 * Provide a name, select solr back end
 * Under the field set titled "Configure Solr backend", check `Standard` option for Solr Connection
 * Verify the values in the standard connection fields, ensure to set the Solr core name with the value of the newly created/configure core
