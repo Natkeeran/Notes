@@ -7,8 +7,9 @@
 ## Steps
 ### Step 1 - Install Apache Solr Search module
 * Go to `ubuntu@claw:/var/www/html/drupal$ `
+* Download search_api_solr module
 * Issue the following command `composer require drupal/search_api_solr` to install the required dependencies
-* Download and enable search_api_solr module
+* Enable search_api_solr module
 * Optionally, also enable Solr Search Defaults submodule to make the configuration process easier
 
 ### Step 2 - Configuring Apache Solr Core on the server
