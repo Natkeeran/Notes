@@ -1,0 +1,6 @@
+
+* (Understanding entity terminology)[https://www.drupal.org/node/1649688]
+* Entity Type = Class
+* Bundle = Sub Class
+* Fields = Properties
+* Entity = Instance
