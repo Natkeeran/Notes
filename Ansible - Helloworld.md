@@ -75,4 +75,4 @@ hello.yml
 ansible-playbook hello.yml
 ```
 
-Ansible write a now.txt file in the home directory of the target machine: /home/vagrant.  It will output the date each time the playbook is run.
+Ansible will create a now.txt file in the home directory of the target machine: /home/vagrant.  It will output the date each time the playbook is run.
