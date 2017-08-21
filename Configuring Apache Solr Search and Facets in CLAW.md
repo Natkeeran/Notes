@@ -1,4 +1,4 @@
-(Note that these instructions are outdated as some of the modules have been enabled in CLAW by default.)
+(Note that these instructions are outdated as some of the modules have been enabled in CLAW by default and the default CLAW solr instance has the right configurations.)
 
 
 # Configuring Apache Solr Search and Facets in CLAW
