@@ -1,3 +1,6 @@
+(Note that these instructions are outdated as some of the modules have been enabled in CLAW by default.)
+
+
 # Configuring Apache Solr Search and Facets in CLAW
 ## Required Modules
 * [Search API](https://www.drupal.org/project/search_api)  (comes pre installed in CLAW vagrant as of July 14, 2016)
