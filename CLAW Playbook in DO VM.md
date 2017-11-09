@@ -5,7 +5,7 @@ Currently CLAW-playbook specifies a default target host machine.  However, it is
 
 
 ## Installation
-* Ensure that your VM has ssh key via public key
+* Ensure that your VM has SSH public key.  
 
 * CLAW Playbook currently expects an `ubuntu` user with sudo privileges.  Thought this need not be the ansible user.
 
