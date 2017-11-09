@@ -1,3 +1,5 @@
+* Ensure that your VM has ssh key via public key
+
 * CLAW Playbook currently expects an `ubuntu` user with sudo privileges.  Thought this need not be the ansible user.
 
 ```
@@ -12,4 +14,8 @@
 * Install dependencies
 ```
 ansible-galaxy install -r requirements.yml
+```
+* Execute Ansible
+```
+ansible-playbook -i inventory/vagrant/hosts playbook.yml
 ```
