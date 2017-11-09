@@ -1,3 +1,10 @@
+## Introduction
+Ansible 
+CLAW-Playbook is composed of several roles.  "Roles are units of organization 
+
+
+
+
 ## Installation
 * Ensure that your VM has ssh key via public key
 
@@ -21,6 +28,7 @@ ansible-galaxy install -r requirements.yml
 ansible-playbook -i inventory/vagrant/hosts playbook.yml
 ```
 
+* Change the Trusted settings in Drupal settings.php by going to `/var/www/html/drupal/web/sites/default/settings.php` and changing the `$settings['trusted_host_patterns']` to include `'.*'`
 ## Possible Issues
 Rerunning ansible seem to fix these issues!
 
