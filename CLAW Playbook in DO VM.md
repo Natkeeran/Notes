@@ -1,7 +1,7 @@
 ## Introduction
 Ansible is an configuration and deployment automation tool.  Ansible executes instructions in the target host machines by conntecting to them via ssh.  The instructions are organized into units called Roles.  Roles are grouped into playbooks.
 
-Currently CLAW-playbook specifies a default target host machine.  However, it is divided into [six groups](https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/hosts), each group potentially targetting different host machines.  
+Currently CLAW-playbook specifies a default target host machine.  However, it is divided into [six groups](https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/hosts), each group can potentially target different host machines.  
 
 
 ## Installation
