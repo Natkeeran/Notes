@@ -8,3 +8,8 @@
 ```
 
 * Change the [hosts](https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/hosts) file to point to the server ip and provide the ansible ssh user and port.  
+
+* Install dependencies
+```
+ansible-galaxy install -r requirements.yml
+```
