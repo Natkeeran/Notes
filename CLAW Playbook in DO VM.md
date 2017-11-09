@@ -22,7 +22,7 @@ ansible-playbook -i inventory/vagrant/hosts playbook.yml
 ```
 
 ## Possible Issues
-Rerunning ansible seem to fix these issue!
+Rerunning ansible seem to fix these issues!
 
 ```
 TASK [karaf : Install wrapper] ***************************************************************************************************************************************
