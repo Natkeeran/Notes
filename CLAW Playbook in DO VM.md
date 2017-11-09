@@ -28,6 +28,19 @@ ansible-playbook -i inventory/vagrant/hosts playbook.yml
 ```
 
 * Change the trusted host settings in Drupal settings.php by going to `/var/www/html/drupal/web/sites/default/settings.php` and changing the `$settings['trusted_host_patterns']` to include `'.*'`
+
+* In this file /var/www/html/Crayfish/Milliner/src/Converter/DrupalEntityConverter.php, replace the convertJsonld function with the following function.  This is a bug in synching drupal content to fedora.
+```
+    public function convertJsonld($path, Request $request)
+    {
+        $path = substr($path, 4);
+        // Return the response from Drupal.
+        $options = $this->preprocess($this->cleanPath($path), $request);
+        return $this->client->get($this->cleanPath($path) . '?_format=jsonld', $options);
+    }
+
+```
+
 ## Possible Issues
 Rerunning ansible seem to fix these issues!
 
