@@ -13,7 +13,7 @@ Currently CLAW-playbook specifies a default target host machine.  However, it is
 #adduser ubuntu
 (follow the prompts to create the user)
 ```
-
+* Clone https://github.com/Islandora-Devops/claw-playbook
 * Change the [hosts](https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/hosts) file to point to the server ip and provide the ansible ssh user and port.  
 
 * Install dependencies
