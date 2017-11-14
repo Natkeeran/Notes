@@ -15,3 +15,4 @@ IslandoraBroadcastRecipients:activemq\cqueue\cislandora-indexing-fcrepo-create,a
                 .setHeader(Exchange.HTTP_METHOD, constant("POST"))
         .toD(getMillinerBaseUrl() + "content");
 ```
+
