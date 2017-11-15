@@ -5,7 +5,7 @@
 IslandoraBroadcastRecipients:activemq\cqueue\cislandora-indexing-fcrepo-create,activemq\cqueue\cislandora-indexing-triplestore Authorization:Bearer Authorization Token @"@context":"https:\/\/www.w3.org\/ns\/activitystreams","type":"Create","actor":{"type":"Person","id":"http:\/\/dsu-beta.utsc.utoronto.ca:8000\/user\/1","object":"http:\/\/dsu-beta.utsc.utoronto.ca:8000\/node\/49"}
 ```
 
-* Alpaca is a subscriber to the `islandora-indexing-fcrepo-content` queue.  In FcrepoIndexer.java, Alpaca sends messages to Milliner microservice to preform the actual processing. Note that `content.stream` is mapped to `islandora-indexing-fcrepo-content` in the Alpaca config.
+* Alpaca  islandora-indexing-fcrepo picks up the message from the `islandora-indexing-fcrepo-content` queue and invokes Milliner microservice (FcrepoIndexer.java).  Note that `content.stream` is mapped to `islandora-indexing-fcrepo-content` in the Alpaca config.
 
 ```java
         from("{{content.stream}}")
@@ -16,3 +16,7 @@ IslandoraBroadcastRecipients:activemq\cqueue\cislandora-indexing-fcrepo-create,a
         .toD(getMillinerBaseUrl() + "content");
 ```
 
+* Alpaca  islandora-indexing-triplestore picks up the message and uses SparqlUpdateProcessor to index it in Blazegraph.
+
+* Milliner creates a resource in Fedora.
+* Gemini provides path mapping service for Milliner.
