@@ -1,4 +1,4 @@
-![alt text](CLAW%20Data%20Flow.jpg)
+![alt text](CLAW_Data_Flow.jpeg)
 
 * User creates a node in Drupal.
 
