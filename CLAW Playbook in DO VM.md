@@ -22,7 +22,7 @@ ansible-galaxy install -r requirements.yml
 ```
 * Execute Ansible
 ```
-ansible-playbook -i inventory/vagrant/hosts playbook.yml --extra-vars "islandora_vagrant_distro=ubuntu/xenial64"
+ansible-playbook -i inventory/vagrant/hosts playbook.yml --extra-vars "islandora_distro=ubuntu/xenial64"
 ```
 
 * Change the trusted host settings in Drupal global_vars to include `'.*'`: https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/group_vars/webserver/drupal.yml#L48
