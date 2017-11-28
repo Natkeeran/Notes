@@ -16,6 +16,8 @@ Currently CLAW-playbook specifies a default target host machine.  However, it is
 * Clone https://github.com/Islandora-Devops/claw-playbook
 * Change the [hosts](https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/hosts) file to point to the server ip and provide the ansible ssh user and port.  
 
+* Change the trusted host settings in Drupal global_vars to include `'.*'`: https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/group_vars/webserver/drupal.yml#L48
+
 * Install dependencies
 ```
 ansible-galaxy install -r requirements.yml
@@ -24,10 +26,6 @@ ansible-galaxy install -r requirements.yml
 ```
 ansible-playbook -i inventory/vagrant/hosts playbook.yml --extra-vars "islandora_distro=ubuntu/xenial64"
 ```
-
-* Change the trusted host settings in Drupal global_vars to include `'.*'`: https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/group_vars/webserver/drupal.yml#L48
-
-
 ## Possible Issues
 Rerunning ansible seem to fix these issues!
 
