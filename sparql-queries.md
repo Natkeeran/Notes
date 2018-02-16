@@ -5,7 +5,7 @@ select ?p ?o WHERE {
 }
 ```
 
-* Get all resources of a particular type
+* Get all resources of a type
 
 ```
 prefix schema: <http://schema.org/>
@@ -14,4 +14,15 @@ SELECT ?subject
 WHERE {
    ?subject rdf:type schema:DigitalDocument.
 } 
+```
+
+* Count the number of entries of a type
+```
+prefix schema: <http://schema.org/>
+
+
+SELECT (COUNT(?subject) AS ?no_subject)
+WHERE {
+  ?subject rdf:type schema:DigitalDocument.
+}
 ```
