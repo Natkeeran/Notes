@@ -26,3 +26,13 @@ WHERE {
   ?subject rdf:type schema:DigitalDocument.
 }
 ```
+
+* Get subject by title
+```
+prefix dcterms: <http://purl.org/dc/terms/>
+
+SELECT ?s
+WHERE {
+  ?s dcterms:title  "Test123".
+}
+```
