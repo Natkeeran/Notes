@@ -36,3 +36,14 @@ WHERE {
   ?s dcterms:title  "Test123".
 }
 ```
+
+* Get all the honorifics
+```
+prefix dbpedia: <http://dbpedia.org/ontology/>
+prefix dragomans: <https://github.com/digitalutsc/dragomans_ontology/>
+
+SELECT ?s ?o
+WHERE {
+  ?s dragomans:honorificPrefix  ?o
+}
+```
