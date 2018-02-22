@@ -63,7 +63,4 @@ WHERE {
 }
 ```
 
-* Delete a triple
-```
-delete where { <http://dragomans.digitalscholarship.utsc.utoronto.ca:1080/user/1?_format=jsonld> rdf:type ?anyObject }
-```
+
