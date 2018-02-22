@@ -27,6 +27,21 @@ WHERE {
 }
 ```
 
+* Get only the drupal triples
+```
+prefix schema: <http://schema.org/>
+
+
+SELECT (COUNT(?subject) AS ?no_subject)
+WHERE {
+  ?subject rdf:type schema:DigitalDocument .
+  
+  FILTER (NOT EXISTS { ?subject rdf:type <http://www.w3.org/ns/ldp#Container> . })
+  
+  
+}
+```
+
 * Get subject by title
 ```
 prefix dcterms: <http://purl.org/dc/terms/>
