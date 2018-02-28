@@ -15,6 +15,7 @@ Curated List of Tamil Open Source Software
 * Tamil NLP (Natural Langauge Processing)
     * https://github.com/tacola-auceg
     * https://github.com/AshokR/TamilNLP
+    * https://github.com/echeran/clj-thamil
     * Tamil Stemmer
         * https://github.com/rdamodharan/tamil-stemmer
         * https://github.com/prassee/vaerCholScala
@@ -29,6 +30,7 @@ Curated List of Tamil Open Source Software
 
 * Tamil Programming Languages
     * https://github.com/Ezhil-Language-Foundation/Ezhil-Lang
+    * https://github.com/echeran/clj-thamil
 
 * Tamil Mapping
 
@@ -38,8 +40,13 @@ Curated List of Tamil Open Source Software
     * https://github.com/Ezhil-Language-Foundation/open-tamil
 
 * Tamil Input Methods
-    * https://github.com/thamizha/ekalappai
-    * https://github.com/ratreya/lipika-ime
+    * Windows 
+        * https://github.com/thamizha/ekalappai
+    * Mac OS X        
+        * https://github.com/ratreya/lipika-ime
+    * Andorid
+        * https://github.com/thamizha/android-tamilvisai
+        * https://github.com/mayooresan/Android-TamilUtil
 
 * Fonts 
     * https://github.com/EkType/Mukta
@@ -47,6 +54,18 @@ Curated List of Tamil Open Source Software
     
 * Apps
     * https://github.com/kishorek/Free-Tamil-Ebooks
-    
 
+* Tamil Parsing
+    * https://github.com/velsubra/Tamil
+    
+* Structured Data
+    * https://github.com/godlytalias/Bible-Database
+    * https://github.com/rprabhu/TamilDictionary/
+    
+* Tamil Corpus 
+    * https://github.com/psankar/korkai
+
+
+## References 
+* https://ezhillang.files.wordpress.com/2018/01/tamil-open-source-landscape-e28093-opportunities-and-challenges_ma_2017_final.pdf
 
