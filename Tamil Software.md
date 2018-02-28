@@ -13,6 +13,7 @@ Curated List of Tamil Open Source Software
 * Tamil Speech Recognition
 
 * Tamil NLP (Natural Langauge Processing)
+    * https://github.com/ctnlpr/A-Taxonomy-of-Tamil-NLP-Research
     * https://github.com/tacola-auceg
     * https://github.com/AshokR/TamilNLP
     * https://github.com/echeran/clj-thamil
