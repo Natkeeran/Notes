@@ -6,7 +6,7 @@ Though claw-playbook aims to be deployable to multiple machines out of the box, 
 
 ## Configuration
 ### Fedora Root URL
-One possible way to separate the fedora entries for a site or collection is to configure a unique fedora root resource.  Create that resource under too in Fedora and configure the crayfish configuration to point to it.
+One possible way to separate the fedora entries for a site or collection is to configure a unique fedora root resource.  Create that resource under root in Fedora and configure the crayfish configuration to point to it.
 
 https://github.com/Islandora-Devops/claw-playbook/blob/master/inventory/vagrant/group_vars/crayfish.yml
 
