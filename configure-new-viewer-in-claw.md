@@ -4,7 +4,7 @@ Currently four media types (audio, file, image, video) are supported in CLAW.  A
 
 * Add the viwer to the taxonomy: `/admin/structure/taxonomy/manage/tags/overview`.  (Programmatically here: `https://github.com/Islandora-CLAW/islandora/blob/8.x-1.x/modules/islandora_demo_feature/migrate/tags.csv`)
 
-* Add new content and media display modes for the viewer: '/admin/structure/display-modes'.  (ex: `core.entity_view_mode.media.pdfjs.yml` and `core.entity_view_mode.node.pdfjs.yml`)
+* Add new content and media display modes for the viewer: `/admin/structure/display-modes`.  (ex: `core.entity_view_mode.media.pdfjs.yml` and `core.entity_view_mode.node.pdfjs.yml`)
 
 * Go to media manage display `/admin/structure/media/manage/file/display` and configure the configure the new mode (ex: `core.entity_view_display.media.file.pdfjs.yml`)
 
