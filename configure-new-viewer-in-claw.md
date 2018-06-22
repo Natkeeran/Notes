@@ -6,7 +6,7 @@ Currently four media types (audio, file, image, video) are supported in CLAW.  A
 
 * Add new content and media display modes for the viewer: `/admin/structure/display-modes`.  (ex: `core.entity_view_mode.media.pdfjs.yml` and `core.entity_view_mode.node.pdfjs.yml`)
 
-* Go to media manage display `/admin/structure/media/manage/file/display` and configure the configure the new mode (ex: `core.entity_view_display.media.file.pdfjs.yml`)
+* Go to media manage display `/admin/structure/media/manage/file/display` and configure the new mode (ex: `core.entity_view_display.media.file.pdfjs.yml`)
 
 * We need to create a [EVA](https://www.drupal.org/project/eva) view to get the media displayed in the content.  Got to `/admin/structure/views` and copy an existing EVA such as `OpenSeadragon Media EVAs`, change the `title` and `Format/Show` and ` Machine Name`. (ex: `views.view.pdfjs_media_evas.yml`)
 
