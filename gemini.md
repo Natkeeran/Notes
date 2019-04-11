@@ -5,4 +5,6 @@ To locate a particular Gemini entry for a node, you need to know the uuid of the
 curl -H "Authorization:Bearer islandora" http://localhost:8000/gemini/1dab4f15-cad6-45f5-a47e-49ddf26b3279
 ```
 
+Note that you can look up media and files in Drupal using the above method as well.
+
 ## How to look up a file in Fedora?
