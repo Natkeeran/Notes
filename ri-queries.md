@@ -1,3 +1,5 @@
+https://groups.google.com/forum/#!topic/islandora/e-ZUkRUFC-4
+
 ## Get all books
 
 ```
