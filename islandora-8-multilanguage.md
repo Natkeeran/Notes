@@ -17,3 +17,5 @@ From the top menu, go to Content >> Add content >> Repository item. Provide the 
 
 Go back to home, you should be able to view content in the language selected in the language switcher.  
 
+## Further Reading
+* [Multilingual guide](https://www.drupal.org/docs/8/multilingual)
