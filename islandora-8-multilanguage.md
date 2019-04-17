@@ -10,8 +10,10 @@ From the top menu, go to Configuration >> Regional and language >> Content langu
 
 From the top menu, go to Structure >> Menu. Edit "Main navigation" menu. Default home menu item cannot be translated due to [this issue](https://www.drupal.org/project/drupal/issues/2838106). Disable that menu item. Click `Add link` to create a new menu item. Provide a menu title (i.e Home) and input `<front>` for the link field. Save. Right click on the Operations beside the new menu link and click the Translate button. Translate the menu link title for the language added above and save.
 
-Go back to home.  The language switcher will enable you to switch the language/content of the menu and content.
+Go back to home. The language switcher will enable you to switch the language/content of the menu and content.
 
 ## Adding a Multilingual Repository Item
+From the top menu, go to Content >> Add content >> Repository item. Provide the required fields and save the object. Click the Translate tab of the object, provide a title in the second language and fill any translatable fields (i.e description). Add the media for the object. Media object can be translated similar to the repositiry item node.
 
+Go back to home, you should be able to view content in the language selected in the language switcher.  
 
