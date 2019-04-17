@@ -1,4 +1,4 @@
-Drupal 8 has good support for developing multilingual sites. In this guide, we will describe the steps needed to setup a basic multilingual Islandora 8 site.  The site 
+Drupal 8 has good support for developing multilingual sites. In this guide, we will describe the steps needed to setup a basic multilingual Islandora 8 site.  
 
 Drupal 8 comes with several [multilingual modules](https://www.drupal.org/docs/8/multilingual/choosing-and-installing-multilingual-modules) in the core. Islandora 8 enables Language and Content Translation modules by default.
 
