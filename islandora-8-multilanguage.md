@@ -17,5 +17,9 @@ From the top menu, go to Content >> Add content >> Repository item. Provide the 
 
 Go back to home, you should be able to view content in the language selected in the language switcher.  
 
+## Field Label Translations
+If you need the field labels of the Repositiry Item displayed in a different language, additional configuration is needed. `Configuration translation` module in the core needs to be enabled. Note that this will enable User Interface translation as well. Each field label needs to be translated. Cache should be cleared to see the changes.
+
+
 ## Further Reading
 * [Multilingual guide](https://www.drupal.org/docs/8/multilingual)
