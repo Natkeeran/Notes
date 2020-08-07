@@ -32,7 +32,7 @@ Usage:
  For more information try "perldoc noid" or "noid help Command".  Summary:
  ```
  
- 4) We need a database to start creating noids.  For example:
+ 4) We need a database/minter to start creating noids.  For example:
  ```
  ubuntu:~/Desktop/Noid4Php$ noid -f /home/nat/Desktop/Noid4Php/test dbcreate s.zd
 ```
