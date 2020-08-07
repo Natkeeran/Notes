@@ -45,7 +45,7 @@ A more complex minter
 5) Once we have minter setup.  We can begin creating identifiers.
 ```
  ./noid -f /home/nat/Desktop/Noid4Php/test2 mint 1
-id: 13030/f54x54g11
+id: 13030/f5wd3q12m
 ```
 
 6) Binding
