@@ -65,7 +65,7 @@ locations: http://digitalscholarship.utsc.utoronto.ca/islandora/object/dsu%3Aroo
 ```
 
 ## Questions
-* Is default Berkely ./DB sufficient?  Is it scalable?
+* Is default BerkelyDB sufficient?  Is it scalable?
 * Can we execute the php based script via Web UI/URL in the same way as perl script?  Not sure.  https://stackoverflow.com/questions/42078593/apache-scriptalias-directory-to-execute-only-php-but-server-up-all-others-norm
 * How to provide as well as look up additional metadata as suggeted by NOID/ARk such as who/what/when etc?
 
