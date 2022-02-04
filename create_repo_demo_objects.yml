@@ -1,0 +1,14 @@
+  GNU nano 4.8                                                     create_repo_demo_objects.yml                                                                
+task: create
+host: https://sandbox.islandora.ca
+username: adminuser
+password: adminpwd
+input_csv: 'https://docs.google.com/spreadsheets/d/1DV0Ka0ZafZq3RgCn0x_AetFtlmnMuNFltzck2QL0ApY/edit?usp=sharing'
+google_sheets_gid: 994664908
+input_dir: repo_islandora_demo_objects
+allow_missing_files: true
+allow_adding_terms: true
+ignore_csv_columns: [Transcript,Supplemental_PDF]
+
+
+
