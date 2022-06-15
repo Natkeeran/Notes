@@ -1,0 +1,385 @@
+[Notes on Installation](https://docs.google.com/document/d/1pD-FL8ifQWAdhXVtGeAXn4sMNMWPOf9OnV9UX7ws0KQ/edit)
+
+## How to Install
+
+1. Vagrant up the playbook
+https://github.com/digitalutsc/islandora-playbook/tree/islandora_lite
+
+2. Add required mime types and extensions
+
+3. Add the following mime types to Document file types
+
+`text/csv`
+`text/vtt`
+
+4. Add the following mime types to Image file types
+
+`image/tiff`
+`image/tif`
+`image/jp2`
+
+5. Add the csv and vtt file extensions to Document field
+6. Add the tif, tiff, and jp2 file extensions to Image field 
+7. Import taxonomy values
+8. Import resource types, and islandora models by going to here: http://localhost:8000/admin/config/development/csv-importer
+9. Adjust the width of the openseadragon viewer
+(/var/www/html/drupal/web/modules/contrib/openseadragon/css/openseadragon.css)
+
+`.field--name-field-media-image {`
+`border: 1px solid green;`
+`width: 100%;`
+`}`
+
+10. Install FFmpeg and configure media-thumbnails-video-settings
+
+`sudo apt-get install ffmpeg`
+
+http://localhost:8000/admin/config/media/media-thumbnails-video-settings
+
+11. Enable Pdf for Imagemagick
+
+`sudo apt-get install ghostscript`
+`sudo pico /etc/ImageMagick-6/policy.xml`
+
+12. Uncomment
+
+`<policy domain="module" rights="read | write" pattern="{PS,PDF,XPS}" />`
+`Comment`
+`<!-- <policy domain="coder" rights="none" pattern="PDF" /> -->`
+
+`sudo systemctl restart php7.4-fpm.service`
+
+13. Advanced queue Runner: There is an additional step required to setup the advance queue runner:
+
+`sudo nano /var/www/html/drupal/vendor/drush/drush/drush.php`
+
+Comment out 
+
+`$environment = new Environment(Path::getHomeDirectory(), $cwd, $autoloadFile);`
+
+Replace with 
+
+`$environment = new Environment("/var/www/html/drupal", $cwd, $autoloadFile); `
+
+14. Advanced Queue: http://localhost:8000/admin/structure/views/view/advancedqueue_jobs/edit/page_1
+
+Select Advanced queue: Message (Message) > Rewrite Results> Select Override the output of this field with custom text and Paste : <pre>{{ message }}</pre>
+
+15. Configure FITS: Add a Fits queue - http://localhost:8000/admin/config/system/queues 
+
+http://localhost:8000/admin/config/system/fits 
+
+http://localhost:8080/fits/examine 
+
+16. Configure Triplestore: Add a Triplestore queue - http://localhost:8000/admin/config/system/queues 
+
+http://localhost:8000/admin/config/triplestore_indexer/configuration 
+
+17. RipRap
+
+https://github.com/digitalutsc/islandora_riprap/blob/IslandoraRiprapFiles/docs/dsu_islandora_riprap.md
+
+18. Bagger
+
+https://github.com/digitalutsc/islandora_bagger/tree/IslandoraLiteBagger
+
+19. Configure Advance Queue Runner
+
+http://localhost:8000/admin/config/advancedqueue/runner
+/var/www/html/drupal/vendor/drush/drush/drush
+
+20. View Mode display: Move the view mode selection field to systems tab:
+
+http://localhost:8000/admin/structure/types/manage/islandora_object/form-display
+
+21. Install Islandora Workbench Integration module
+
+Remove islandora dependency and install islandora workbench integration
+
+/var/www/html/drupal/web/modules/contrib/islandora_workbench_integration/islandora_workbench_integration.info.yml
+
+22. Enable REST permissions (json and josnld)
+
+* Content
+* File
+* File Upload
+* Field
+* Taxonomy term
+* Taxonomy vocabulary
+* Media
+* File upload
+
+## Installing Sample objects
+
+1. Get Islandora Workbench (islandora_lite branch) 
+https://github.com/Natkeeran/islandora_workbench/tree/islandora_lite
+
+`sudo python3 setup.py install`
+
+2. Clone https://github.com/digitalutsc/repo_sample_objects into input_dir.
+
+3. Create two Collection objects, and change the node ids to the demo collection spreadsheet’s field_member_of column.
+
+4. Check
+./workbench --config create_islandora_object.yml --check
+
+5. Run
+./workbench --config create_islandora_object.yml 
+./workbench_islandora_lite --config create_islandora_media.yml
+
+
+## Multisite Questions
+
+* Where do local taxonomies live?
+* In each separate site?
+* Single site ? https://www.drupal.org/project/entity_share 
+
+## Generating Derivatives
+
+Islandora Lite makes available a configurable option to allow for alternative derivative creation and data extraction in Islandora core. 
+
+Islandora Lite uses Drupal's Advanced Queue (third party module) and Advanced Queue Runner  to manage the creation of derivatives and general data extraction. In this, it provides an alternative to Apache Camel, Alpaca, and Karaf in the larger stack.
+A Drupal action is triggered, which is queued in Advanced Queue, and processed using the Advanced Queue runner. This empowers Islandora users to take advantage of the scalability of running a queue system (including making microservices and job scheduling available to the system), while also getting status/error reporting in the Drupal UI and keeping the system in PhP. 
+
+## File Storage
+
+Support what is supported by Drupal (we think - still need to test some more)
+
+[Private files download permissions](https://www.drupal.org/project/private_files_download_permission) is used to manage the file-level permissions.
+
+
+## Dependencies
+
+* Drupal 9 installation
+* [View Mode Switch](https://www.drupal.org/project/view_mode_switch)
+* [Ark Minting and Binding Service](https://github.com/digitalutsc/arks-service/blob/master/README.md)
+* [Triple-store Indexer](https://github.com/digitalutsc/triplestore_indexer/blob/main/README.md)
+* [List of Drupal Modules and their uses in the stack](https://docs.google.com/spreadsheets/d/1cfiorBzIjX1PkkEf8XwX20b8VoysTBaKEDUSEZOh_s4/edit#gid=1438619491)
+
+## With Composer 
+
+For developed in-house module, to have the following code in composer.json: 
+
+```json
+     "repositories": {
+        "drupal": {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    },
+```
+Because by default, composer is looking for package in [packagist.org](https://packagist.org/), but Drupal has their own place for its modules and themes, the code block above redirected to Drupal's package site. 
+
+Next, include all the dependencies in the `"require"` block, ie.
+```json 
+     "require": {
+        "react/child-process": "*",
+        "react/event-loop": "*",
+        "drupal/advancedqueue": "*"
+    },
+```
+
+For example: 
+- https://github.com/digitalutsc/advanced-queue-runner/blob/1.1.x/composer.json
+- https://github.com/digitalutsc/triplestore_indexer/blob/8.x-1.x/composer.json
+- https://github.com/digitalutsc/drupal_fits/blob/8.x-1.x/composer.json
+
+For JS library required by Drupal module, for example: [PDF module](https://www.drupal.org/project/pdf) needs [pdf.js library](https://github.com/mozilla/pdf.js) to be cloned and place under libraries directory (ie. drupal/web/libraries). To have it run automatically with composer, place the following code in `composer.json` at root of Drupal site (for site level),
+
+```json
+  "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "mozilla/pdf.js",
+                "version": "2.10.377",
+                "type":"drupal-library",
+                "source": {
+                    "url": "https://github.com/mozilla/pdf.js.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+
+   "require": {
+        "mozilla/pdf.js": "2.10.377"
+    },
+```
+
+Make sure to have: 
+
+- in `require` section:
+
+```json
+"composer/installers": "^1.0"
+```
+
+- in `installer-paths` section: 
+
+```json
+ "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+```
+
+Clone the repository with a zip file instead: 
+
+```json
+{
+   "name":"smarty/smarty",
+   "version":"3.1.7",
+   "dist":{
+      "url":"https://www.smarty.net/files/Smarty-3.1.7.zip",
+      "type":"zip"
+   }
+}
+```
+
+Source: https://stefvanlooveren.me/blog/how-add-github-repository-composerjson-be-used-library-drupal-8-solved
+
+## About Testing in Islandora Lite
+
+We use Github Actions as our testing framework for the project. 
+
+### Github Actions
+
+GitHub Actions is a continuous integration and continuous delivery (CI/CD) platform that allows you to create workflows to automate tasks such as building or testing.
+
+The GitHub Actions documentation is located [here](https://docs.github.com/en/actions).
+
+#### Workflows
+
+GitHub Actions workflows are YAML files that are placed in the `.github/workflows` directory of a repository. You can configure a workflow to be triggered upon an event, run on a schedule, or be activated manually.
+
+A workflow consists of jobs which are made up of a set of steps that will execute on a runner. Each step can be a shell script or an action, and each step within one job will be run sequentially. Actions are applications on the GitHub Actions platform that run a frequently repeated task can prevent repetitive code in workflows. Actions written by others that are available to use can be found on the [GitHub Marketplace](https://github.com/marketplace?type=actions).
+
+
+#### Checking Coding Standards with PHPCS
+
+Below is an example workflow YAML file for checking files with PHPCS. This workflow consists of one job named "PHPCS" that uses the Checkout and Setup PHP actions and runs some commands to install and use PHPCS.
+
+```yaml
+name: PHPCS Check
+on: [pull_request]
+
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+
+      - name: Install PHPCS with Drupal Coding Standards
+        run: |
+          composer global require drupal/coder
+          composer global require drupal/coder dealerdirect/phpcodesniffer-composer-installer
+      
+      - name: Check PHPCS Coding Standards
+        run: |
+          phpcs --standard=Drupal --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --ignore=node_modules,bower_components,vendor ./
+```
+
+#### Sync GitHub Repo to GitLab
+
+An action that can be helpful in syncing GitHub repositories to GitLab is the [Mirror to GitLab and run GitLab CI](https://github.com/marketplace/actions/mirror-to-gitlab-and-run-gitlab-ci) action. When used in a workflow, this action will mirror all GitHub commits to the GitLab repository linked in the environment variable.
+
+The action's documentation provides an example workflow that can be used as a base for usage.
+
+Note that a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) should be generated rather than a personal access token. When the token is generated, a bot user with the username `project_{project_id}_bot` will be added to the GitLab project.
+
+If the repository is being migrated from GitLab, it can be [imported to GitHub](https://github.com/new/import) before setting up mirroring. After being imported, GitHub Actions must be manually enabled in the repository's settings. If an import fails, the GitLab repo can still be [mirrored manually](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository#mirroring-a-repository-that-contains-git-large-file-storage-objects).
+
+With the action:
+* `GITLAB_USERNAME` should be set to the username of the bot.
+* `GITLAB_HOSTNAME` should be set to `git.drupal.org`
+* `GITLAB_PROJECT_ID` should be set to the project id, which can be found in the bot user's username.
+* Input parameters should be set to the URL of the project (`https://git.drupalcode.org/project/{project_name}`).
+
+#### Testing With Different Versions
+A [reusable workflow](https://github.com/digitalutsc/reusable_workflows) is set up so that we can test against different versions of PHP and Drupal while running PHP-CS.
+
+## Setup Debugging Tool
+
+More about Xdebug: https://xdebug.org/
+
+### Install XDebug 2.9 in Islandora Playbook or Islandora playbook
+
+Credit to [Alan Stanley](https://docs.google.com/document/d/1rg3g7OariI0QjSs-kwaYgzZOh-Z7aZs_dIhFVLu1RjQ/edit#)
+
+* Prepare:
+`sudo apt install php7.4-dev`
+
+* Git clone xdebug repo and compile:
+
+````
+git clone git://github.com/xdebug/xdebug.git
+git checkout xdebug_2_9
+phpize
+./configure --enable-xdebug
+sudo make install
+sudo service apache2 restart
+````
+
+* Activate xdebug by updating xdebug.ini `sudo vi  /etc/php/7.4/mods-available/xdebug.ini`
+
+````
+[xdebug]
+zend_extension=xdebug.so
+xdebug.remote_enable=1
+xdebug.remote_autostart=1
+xdebug.remote_host=10.0.2.2
+xdebug.remote_handler=dbgp
+xdebug.remote_port=9000
+xdebug.max_nesting_level = 2000
+````
+
+* Then, run 
+````
+sudo phpenmod xdebug
+sudo service apache2 restart
+````
+
+* Outcome if things are setup properly is Xdebug version when command `php --version` is run:
+
+````
+root@islandora8:/var/www/html/xdebug# php --version
+PHP 7.4.27 (cli) (built: Dec 20 2021 21:28:15) ( NTS )
+Copyright (c) The PHP Group
+Zend Engine v3.4.0, Copyright (c) Zend Technologies
+    with Zend OPcache v7.4.27, Copyright (c), by Zend Technologies
+    with Xdebug v2.9.9-dev, Copyright (c) 2002-2020, by Derick Rethans
+````
+
+### In PHPStorm
+
+* Follow steps in: https://www.jetbrains.com/help/phpstorm/configuring-xdebug.html
+* Setup Remote Host connect PHP Storm to the playbook 
+   * Make sure setup `Mappings` which synchronize file in playbook and local system because it's unable to set a breakpoint in Remote Host mode. 
+* In IDE: 
+  - Enable listening to incoming debug connections by either clicking the Start Listening for PHP Debug Connections button on the toolbar or selecting Run | Start Listening for PHP Debug Connections
+  - Set a breakpoint at anywhere of the code. 
+* In Web Browser: 
+  - Install Xdebug Browser Extension for Google Chrome(https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc) and Firefox (https://addons.mozilla.org/en-US/firefox/addon/zend-debugger-toolbar/)
+  - Then Enable the Debug mode, More can be found [here](https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html#xdebug-helper-extension)
+* If the setup goes through, PHPStorm should start listening debugging connection and display Debug console windows
+
+### For VSCode
+
+TBA
