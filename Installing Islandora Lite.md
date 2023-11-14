@@ -44,8 +44,14 @@ Note that you would need to add the ip `^##\.##\.##\.##$` or the domain `^mydoma
 
 * Install the site
 ```
- sudo ./vendor/drush/drush/drush si -y --existing-config minimal --account-pass password
+sudo ./vendor/drush/drush/drush si -y --existing-config minimal --account-pass password
 ```
+
+* Set folder ownership for `web/sites/default/files` and `web/sites/default/private` to be www-data. For example:
+```
+chown -R www-data:www-data private
+```
+
 ### Setting up Apache and Virtual Host
 
 * Ensure that apache rewrite is enabled
@@ -76,6 +82,7 @@ sudo a2enmod rewrite
 ```
 systemctl restart apache2
 ```
+
 
 
 ### Islandora Lite Configurations
