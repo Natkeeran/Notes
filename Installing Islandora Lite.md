@@ -92,6 +92,24 @@ systemctl restart apache2
 sudo ./vendor/drush/drush/drush migrate:import islandora_tags
 ```
 
+### Configuring Solr
+* [Install Solr](https://tecadmin.net/how-to-install-apache-solr-on-ubuntu-22-04/)
+* Create a Solr core for indexing islandora lite content
+```
+sudo su - solr -c "/opt/solr/bin/solr create -c ISLANDORA -n data_driven_schema_configs"
+```
+* Configure the solr server: `/admin/config/search/search-api/server/default_solr_server/edit`
+* Download the config.zip and replace the solr core conifgs
+
+```
+root@demo_server:/var/solr/data/ISLANDORA/conf# ls /opt/solr_9_x_config/
+accents_en.txt   protwords_en.txt   schema_extra_fields.xml  solrconfig_extra.xml  solrconfig_requestdispatcher.xml  stopwords_und.txt
+accents_und.txt  protwords_und.txt  schema_extra_types.xml   solrconfig_index.xml  solrcore.properties               synonyms_en.txt
+elevate.xml      schema.xml         solrconfig.xml           solrconfig_query.xml  stopwords_en.txt                  synonyms_und.txt
+root@demo_server:/var/solr/data/ISLANDORA/conf# cp /opt/solr_9_x_config/*.* ./
+root@demo_server:/var/solr/data/ISLANDORA/conf# sudo systemctl restart solr
+```
+* Reindex the solr index `/admin/config/search/search-api/index/default_solr_index_islandora_lite`
 
 ### Other considerations
 * Max upload size `upload_max_filesize` and `post_max_size`
