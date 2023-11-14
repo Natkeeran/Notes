@@ -47,7 +47,7 @@ __Environment Setup:__
 * Ensure that you have necessary php extensions, including php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-imagick php-gd 
 * Please see [How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-22-04) for detail guidence
 
-### Installing Drupal
+### Installing Drupal/Islandora Lite
 
 * Clone the project
 ```
