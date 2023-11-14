@@ -40,11 +40,13 @@ $settings['trusted_host_patterns'] = [
 
 ```
 
+Note that you would need to add the ip `^##\.##\.##\.##$` or the domain `^mydomain\.com$` to the trusted host patterns.
+
 * Install the site
 ```
  sudo ./vendor/drush/drush/drush si -y --existing-config minimal --account-pass password
 ```
-## Setting up Apache and Virtual Host
+### Setting up Apache and Virtual Host
 
 * Ensure that apache rewrite is enabled
 ```
@@ -62,9 +64,31 @@ sudo a2enmod rewrite
   </Directory>
         ServerAdmin webmaster@localhost
         DocumentRoot /var/www/islandora-sandbox/web
+
         ErrorLog ${APACHE_LOG_DIR}/error.log
         CustomLog ${APACHE_LOG_DIR}/access.log combined
         #Include conf-available/serve-cgi-bin.conf
 </VirtualHost>
 
+```
+
+* Restart apache
+```
+systemctl restart apache2
+```
+
+
+### Islandora Lite Configurations
+
+* Import required taxonomy
+```
+sudo ./vendor/drush/drush/drush migrate:import islandora_tags
+```
+
+
+### Other considerations
+* Max upload size `upload_max_filesize` and `post_max_size`
+```
+sudo pico /etc/php/8.2/apache2/php.ini
+systemctl restart apache2
 ```
