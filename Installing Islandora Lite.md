@@ -158,3 +158,7 @@ root@demo_server:/var/solr/data/ISLANDORA/conf# sudo systemctl restart solr
 sudo pico /etc/php/8.2/apache2/php.ini
 systemctl restart apache2
 ```
+
+* pdf thumbnails not generating: Ensure that imagemagick policy is enabled as described [here](https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion).  Remebert to restart apache2.
+
+* video thumbnails now generating: Ensure ffmpeg is installed and configured (`/admin/config/media/media-thumbnails-video-settings`).
