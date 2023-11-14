@@ -1,4 +1,47 @@
-## Installing on a LAMP Server
+## ISLE-DC (Docker)
+### Fresh Build
+```
+git clone --branch 1.0.0-beta2 https://github.com/digitalutsc/isle-dc.git isle-dc-lite
+cd isle-dc-lite
+make lite_dev
+```
+
+### To Rebuild
+```
+make clean
+composer clear-cache 
+make lite_dev
+```
+
+### For Windows Users:
+
+__Environment Setup:__
+
+1. Install WSL2 and Ubuntu. Instructions for doing so can be found on the [Ubuntu Website](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview) and the [Microsoft Website](https://learn.microsoft.com/en-us/windows/wsl/install)
+
+1. Download and install [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/). In Docker Desktop, navigate to Settings (gear icon in the menu bar) > Resources > WSL Integration and check "Enable integration with my default WSL distro". Also, under "Enable integration with additional distros," turn on the Ubuntu distribution you are using. If WSL2 is currently running, close it by running `wsl --shutdown` in an elevated Powershell window. 
+    
+    **NOTE:** You should not ever have to run Docker Desktop with elevated privileges (as administrator). If a message appears stating that the current user does not have privilleges, run this command in an elevated Command Prompt window: 
+    ```
+    net localgroup docker-users "your-user-id" /ADD
+    ```
+
+    **NOTE:** If a message appears stating that you should convert from WSL1 to WSL2, run the following in a normal (non-elevated) *Windows* Command Prompt
+    ```
+    wsl --set-version Ubuntu-<VERSION NUMBER> 2
+    wsl --list --verbose    # the version number next to the Ubuntu distribution should be 2
+    ```
+
+1. Install GNU make.
+    ```bash
+    sudo apt install make
+    ```
+
+1. Open WSL2 (Start > Ubuntu Version) and run the build commands found [above](#isle-dc-docker). Make sure to clone the isle-dc repository within the WSL2 filesystem (do not clone in /mnt or any of its subdirectories). 
+
+1. Check if everything works. There should be a Drupal website present at https://islandora.traefik.me/
+
+## Installing on a LAMP Server (Manual Installation)
 ### Prepare the LAMP Server
 * Install necessary components such as linux, apache, mysql, php, composer, git,  curl, and imagemagick
 * Ensure that you have necessary php extensions, including php-curl php-json php-mbstring php-mysql php-tokenizer php-xml php-zip php-imagick php-gd 
@@ -82,8 +125,6 @@ sudo a2enmod rewrite
 ```
 systemctl restart apache2
 ```
-
-
 
 ### Islandora Lite Configurations
 
