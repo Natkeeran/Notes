@@ -6,7 +6,7 @@ cd isle-dc-lite
 make lite_dev
 ```
 
-Please note that, if you want to clone a release, please change the branch above to the release tag.
+Please note that, by default islandora-lite-site 2.x branch will be deployed.  If you want to clone a specific release, please change the tag [here](https://github.com/digitalutsc/isle-dc/blob/islandora-lite-site-2.x/custom.Makefile#L39).
 
 ### To Rebuild
 ```
