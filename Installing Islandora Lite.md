@@ -1,10 +1,12 @@
 ## ISLE-DC (Docker)
 ### Fresh Build
 ```
-git clone --branch 1.0.0-beta2 https://github.com/digitalutsc/isle-dc.git isle-dc-lite
+git clone --branch islandora-lite-site-2.x https://github.com/digitalutsc/isle-dc.git isle-dc-lite
 cd isle-dc-lite
 make lite_dev
 ```
+
+Please note that, if you want to clone a release, please change the branch above to the release tag.
 
 ### To Rebuild
 ```
