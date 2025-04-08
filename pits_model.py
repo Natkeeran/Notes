@@ -7,8 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1T5NpoFF4HATYM1mZI9ucmub-wm8l1XQR
 """
 
-
-
 from pomegranate.distributions import Categorical
 from pomegranate.distributions import ConditionalCategorical
 from pomegranate.bayesian_network import BayesianNetwork
@@ -127,11 +125,8 @@ def pits_bayesian_model():
 
   for x in range(1, 5):
     for y in range(1, 5):
-      current_location = Location(x, y)
-
       breeze_node_str = "breeze_" + str(x) + "_" + str(y)
-
-      adjacent_cells = current_location.get_adjacent_cells_inside_boundary()
+      adjacent_cells = get_pits_adjacent_cells(x, y)
 
       for cell in adjacent_cells:
         # we won't have pit in 1_1
@@ -189,5 +184,4 @@ def test_pits_model():
   print(predictions)
   print(tesnor_list)
 
-test_pits_model()
-
+#test_pits_model()
