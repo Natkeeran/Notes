@@ -109,5 +109,5 @@ def test_wumbus_model():
   print(wumpus_tensor)
   print(pre)
 
-test_wumbus_model()
+#test_wumbus_model()
 
